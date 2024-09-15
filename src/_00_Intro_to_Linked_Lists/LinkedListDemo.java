@@ -31,7 +31,12 @@ public class LinkedListDemo {
          * String nodes.
          * 
          */
-
+    	LinkedList<Double> dlist = new LinkedList<Double>();
+    	dlist.add(3.8976537849657048924615);
+    	dlist.add((double)-3);
+    	dlist.add(0.0);
+    	dlist.remove(2);
+    	System.out.println(dlist.getHead().getNext().getValue());
     }
 
 }

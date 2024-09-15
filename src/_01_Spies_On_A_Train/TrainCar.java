@@ -15,8 +15,7 @@ public class TrainCar {
     String questionPassenger() {
 
         String[] brokenUpEvidence = evidence.split(" ");
-        String object = brokenUpEvidence[brokenUpEvidence.length - 1]
-                .replace(".", "");
+        String object = brokenUpEvidence[brokenUpEvidence.length - 1].replace(".", "");
 
         return "Nice to meet you. My name is " + passenger + ". Hmm... a "
                 + object + "? I saw " + evidence + ".";
