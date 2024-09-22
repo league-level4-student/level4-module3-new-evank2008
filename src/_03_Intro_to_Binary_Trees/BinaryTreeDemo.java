@@ -33,7 +33,16 @@ public class BinaryTreeDemo {
      */
 
     public static void main(String[] args) {
-
+BinaryTree<Integer> bree = new BinaryTree<Integer>();
+bree.insert(4000);
+bree.insert(2000);
+bree.insert(6000);
+bree.insert(5000);
+bree.insert(5000);
+bree.insert(5001);
+bree.insert(4999);
+bree.insert(4001);
+bree.printHorizontal();
     }
 
 }

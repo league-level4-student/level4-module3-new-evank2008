@@ -1,9 +1,12 @@
 package _04_Morse_Code;
 
+import java.util.ArrayList;
+
 import _03_Intro_to_Binary_Trees.BinaryTree;
+import _03_Intro_to_Binary_Trees.Node;
 
 public class MorseDecoder {
-
+//WORK ON LINE 69 RAHHHHHHHHHHH
     BinaryTree<MorseCode> mcTree = new BinaryTree<MorseCode>();
 
     public static void main(String[] args) {
@@ -63,8 +66,24 @@ public class MorseDecoder {
      * english alphabet.
      * 
      */
+    //TODO: assemble the decoded bits into a string and print.
     void decode() {
         String morseCode = "-.-- --- ..- .- .-. . .- -- .- --.. .. -. --.";
+        String[] codeBits = morseCode.split(" ");
+        Node<MorseCode> path = mcTree.getRoot();
+        ArrayList<String> decodedBits = new ArrayList<String>();
+        for(String s:codeBits) {
+        	for(char c: s.toCharArray()) {
+        		if(c=='.') {
+        			path=path.getLeft();
+        		} else {
+        			path=path.getRight();
+        		}
+        	}
+        	//path has reached end
+        	
+        	decodedBits.add(path.getValue().getDecoded());
+        }
     }
 
 }

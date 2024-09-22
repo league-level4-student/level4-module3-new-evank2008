@@ -33,17 +33,32 @@ public class RainbowZombieCongaLine {
 
     // Make the passed in zombie the first Zombie in the conga line!
     public void engine(Zombie dancer) {
-
+    	Node<Zombie> next = new Node<Zombie>(dancer);
+    	next.setNext(congaLine.getHead());
+    	congaLine.setHead(next);
     }
 
     // Make the passed in zombie the last Zombie in the conga line!
     public void caboose(Zombie dancer) {
-
+    	congaLine.add(dancer);
     }
 
     // Place the zombie at the designated position in the conga line!
     public void jumpInTheLine(Zombie dancer, int position) {
-
+    	Node<Zombie> injection = new Node<Zombie>(dancer);
+    	injection.setNext(congaLine.getHead());
+    	//set inj to point next to head
+    	//for int i loop runs amount of times equal to position
+    	//i=0 no run
+    	for(int i = position;i>0;i--) {
+    		injection.setPrev(injection.getNext());
+    		injection.setNext(injection.getNext().getNext());
+    	}
+    	//in the loop: point next to the current pointnext's next
+    	//now clean it up
+    	injection.getPrev().setNext(injection);
+    	injection.getNext().setPrev(injection);
+    
     }
 
     /*
@@ -51,7 +66,13 @@ public class RainbowZombieCongaLine {
      * the conga line!
      */
     public void everyoneOut(Zombie dancer) {
-
+    	Node<Zombie> checkee = congaLine.getHead();
+    	for(int i = 0; i<congaLine.size();i++) {
+    		if(dancer.getZombieHatColor()==checkee.getValue().getZombieHatColor()) {
+    			congaLine.remove(i);
+    		}
+    		checkee=checkee.getNext();
+    	}
     }
 
     /*
@@ -59,7 +80,18 @@ public class RainbowZombieCongaLine {
      * from the conga line!
      */
     public void youAreDone(Zombie dancer) {
-
+    	Node<Zombie> checkee = congaLine.getHead();
+    	boolean done = false;
+    	int i = 0;
+    	while(!done) {
+    		if(dancer.getZombieHatColor()==checkee.getValue().getZombieHatColor()) {
+    			congaLine.remove(i);
+    			done=true;
+    		} else {
+    			i++;
+    			checkee=checkee.getNext();
+    		}
+    	}
     }
 
     /*
@@ -67,7 +99,9 @@ public class RainbowZombieCongaLine {
      * add one to the front, one to the end and one in the middle.
      */
     public void brains(Zombie dancer) {
-
+    	jumpInTheLine(dancer,congaLine.size()/2);
+    	engine(dancer);
+    	caboose(dancer);
     }
 
     /*
@@ -75,7 +109,16 @@ public class RainbowZombieCongaLine {
      * color to the end of the line.
      */
     public void rainbowBrains(Zombie dancer) {
-
+    	engine(dancer);
+    	Zombie[] pack = new Zombie[7];
+    	int i = 0;
+    	for (ZombieHatColor z: ZombieHatColor.values()) {
+    		pack[i]=new Zombie(z);
+    		i++;
+    	}
+    	for(Zombie z: pack) {
+    		caboose(z);
+    	}
     }
 
     public LinkedList<Zombie> getCongaLine() {
