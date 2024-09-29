@@ -6,7 +6,7 @@ import _03_Intro_to_Binary_Trees.BinaryTree;
 import _03_Intro_to_Binary_Trees.Node;
 
 public class MorseDecoder {
-//WORK ON LINE 69 RAHHHHHHHHHHH
+
     BinaryTree<MorseCode> mcTree = new BinaryTree<MorseCode>();
 
     public static void main(String[] args) {
@@ -66,7 +66,6 @@ public class MorseDecoder {
      * english alphabet.
      * 
      */
-    //TODO: assemble the decoded bits into a string and print.
     void decode() {
         String morseCode = "-.-- --- ..- .- .-. . .- -- .- --.. .. -. --.";
         String[] codeBits = morseCode.split(" ");
@@ -81,9 +80,14 @@ public class MorseDecoder {
         		}
         	}
         	//path has reached end
-        	
         	decodedBits.add(path.getValue().getDecoded());
+        	path=mcTree.getRoot();
         }
+        String decodedMessage = "";
+        for(String s: decodedBits) {
+        	decodedMessage+=s;
+        }
+        System.out.println(decodedMessage);
     }
 
 }

@@ -31,7 +31,26 @@ public class AVLTreeDemo {
      */
 
     public static void main(String[] args) {
+BinaryTree<String> brie = new BinaryTree<String>();
+AVLTree<String> are = new AVLTree<String>();
+brie.insert("z");
+brie.insert("g");
+brie.insert("d");
+brie.insert("f");
 
-    }
+brie.insert("a");
+
+brie.insert("z");
+brie.printVertical();
+are.insert("z");
+are.insert("g");
+are.insert("d");
+are.insert("f");
+
+are.insert("a");
+
+are.insert("z");
+are.printVertical();
+}
 
 }

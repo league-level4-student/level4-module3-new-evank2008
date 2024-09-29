@@ -13,11 +13,26 @@ public class HowManyAreSmallerThanMe {
      * You may want to create a helper method to search through the AVLTree and
      * count iteratively or recursively.
      */
-
-    public int howManyAreSmallerThanMe(AVLTree<Integer> avlTree, int me) {
-
-        return 0;
-
+int smalls = 0;
+int big;
+    public int howManyAreSmallerThanMe(AVLTree<Integer> avlTree, int me) { 
+        big=me;
+        iterateall(avlTree.getRoot());
+        return smalls;
     }
 
+      void iterateall(AVLNode rot) {
+    	  
+        if(rot.getValue()!= null){
+        if((Integer)rot.getValue()<big) {
+        	smalls++;
+        }
+        if(rot.getLeft()!=null) {
+            iterateall(rot.getLeft());
+            }
+        if(rot.getRight()!=null) {
+            iterateall(rot.getRight());
+            }
+       }
+      }
 }
